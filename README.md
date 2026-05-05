@@ -73,43 +73,58 @@ A state-of-the-art, AI-powered platform designed to provide students with instan
 
 ### 2. Installation
 
-Clone the repository and install all dependencies (Root, Client, and Server) with one command:
+Clone the repository and install all dependencies:
 
 ```bash
-# Install root tools
-npm install
-
-# Install both client and server dependencies
+# Install everything (Root, Server, and Client)
 npm run install:all
 ```
 
 ### 3. Environment Setup
 
-Create `.env` files in both `client` and `server` folders.
+Create a `.env` file in the **root** directory (the server and client will both use this or their own respective .env files).
 
-**Server (`server/.env`):**
+**Root `.env`:**
 ```env
-PORT=5000
+PORT=5005
 MONGODB_URI=your_mongodb_connection_string
 OPENROUTER_API_KEY=your_api_key
-SITE_URL=http://localhost:3000
 ```
 
-**Client (`client/.env`):**
-```env
-VITE_API_URL=http://localhost:5000/api/doubts
-```
+### 4. Running Locally
 
-### 4. Running the Application
-
-Start the development environment (both Frontend and Backend) using:
-
+**Development Mode** (Hot reloading for both):
 ```bash
 npm run dev
 ```
 
-- **Frontend**: [http://localhost:5173](http://localhost:5173) (or as shown in terminal)
-- **Backend**: [http://localhost:5000](http://localhost:5000)
+**Production Mode** (Build and serve):
+```bash
+npm run build
+npm start
+```
+
+- **Frontend**: [http://localhost:5005](http://localhost:5005) (Served by backend in production)
+- **Backend API**: [http://localhost:5005/api/doubts](http://localhost:5005/api/doubts)
+
+---
+
+## 🚀 Deployment
+
+### Deploying to Render (Recommended)
+
+1. **Create a new Web Service** on Render.
+2. **Connect your Repository**.
+3. **Configure Settings**:
+   - **Environment**: `Node`
+   - **Build Command**: `npm run build`
+   - **Start Command**: `npm start`
+4. **Environment Variables**:
+   - Add `MONGODB_URI`
+   - Add `OPENROUTER_API_KEY`
+   - Add `NODE_ENV`: `production`
+   - (Optional) `PORT`: `5005` (Render will override this, which is fine)
+5. **Deploy!** The server will build the React frontend and serve it automatically.
 
 ---
 

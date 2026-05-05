@@ -14,6 +14,9 @@ const doubtSchema = new mongoose.Schema({
         type: String,
         default: 'General'
     },
+    modelUsed: {
+        type: String
+    },
     createdAt: {
         type: Date,
         default: Date.now
