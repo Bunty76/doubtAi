@@ -8,5 +8,18 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-ui': ['lucide-react', 'framer-motion'],
+          'vendor-utils': ['axios', 'marked', 'dompurify', 'clsx', 'tailwind-merge'],
+          'vendor-math': ['katex'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+  },
 })
 
