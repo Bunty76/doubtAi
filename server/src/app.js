@@ -29,7 +29,8 @@ if (process.env.NODE_ENV === 'production') {
     const clientPath = path.join(__dirname, '../../client/dist');
     app.use(express.static(clientPath));
 
-    app.get('(.*)', (req, res) => {
+    // Catch-all route to serve the frontend
+    app.use((req, res) => {
         res.sendFile(path.join(clientPath, 'index.html'));
     });
 }
